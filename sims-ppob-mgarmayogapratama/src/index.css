@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-balance {
-  background: url("@/assets/images/Background\ Saldo.png") no-repeat center;
+  background: url("../public/assets/Background\ Saldo.png") no-repeat center;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
