@@ -29,7 +29,8 @@ export default function InformationComponent({
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-col justify-evenly bg-balance text-white p-4 rounded-lg shadow-md">
+      <div
+        className={`w-full h-full flex flex-col justify-evenly bg-balance text-white p-4 rounded-lg shadow-md`}>
         <p className="text-[16px] text-white">Saldo anda</p>
         <h3 className="text-3xl font-bold">
           Rp. {showBalance ? `${formatBalance(balance?.balance)}` : "•••••••"}
