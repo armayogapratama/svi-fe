@@ -178,7 +178,7 @@ export default function AccountEditPages() {
                       <Pencil className="w-4 h-4 text-line-10" />
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="flex flex-col justify-between w-8/12 bg-neutral-50 rounded-lg">
+                  <DialogContent className="flex flex-col justify-between w-11/12 md:w-8/12 bg-neutral-50 rounded-lg">
                     <DialogHeader>
                       <DialogTitle>
                         <div className="flex flex-row w-full justify-between">
@@ -230,7 +230,7 @@ export default function AccountEditPages() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex justify-center items-end self-end w-11/12 md:self-center my-4 pb-[30px] mt-4 pr-0">
+                      <div className="flex justify-center items-end w-full md:w-11/12 self-center my-4 pb-[30px] mt-4 pr-0">
                         <Button
                           className="w-full bg-red-600 hover:bg-red-700 text-neutral-50 h-[40px] rounded-lg text-[16px]"
                           type="submit"
@@ -256,11 +256,11 @@ export default function AccountEditPages() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col items-center justify-center self-center gap-y-5 px-24">
+        <div className="w-full flex flex-col items-center justify-center self-center gap-y-5 md:px-24">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8 w-9/12">
+              className="space-y-8 w-10/12 md:w-9/12">
               <FormField
                 control={form.control}
                 name="email"

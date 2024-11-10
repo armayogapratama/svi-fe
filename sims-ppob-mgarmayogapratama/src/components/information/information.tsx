@@ -10,8 +10,8 @@ export default function InformationComponent({
   handleToggleBalance,
 }: InformationInterface) {
   return (
-    <div className="flex flex-row items-center justify-between gap-x-8 px-24">
-      <div className="w-6/12 flex flex-col gap-y-3">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-y-5 gap-x-8 px-12 md:px-24">
+      <div className="w-full md:w-6/12 flex flex-col gap-y-3">
         <div className="w-full">
           {profile.profile_image ===
           "https://minio.nutech-integrasi.com/take-home-test/null" ? (

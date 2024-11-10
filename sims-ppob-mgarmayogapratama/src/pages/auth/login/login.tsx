@@ -15,10 +15,12 @@ import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 import { UserLogin } from "@/store/action/actionLogin";
+import { useMediaQuery } from "@/hooks/hook";
 
 export default function LoginPages() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [seen, setSeen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -62,8 +64,8 @@ export default function LoginPages() {
   return (
     <main className="w-full flex flex-col items-center justify-center">
       <div className="w-full flex flex-row">
-        <div className="w-9/12 flex flex-col items-center justify-between pt-32 pb-16 gap-y-5">
-          <div className="w-full flex flex-col items-center justify-center px-24 gap-y-5">
+        <div className="w-full md:w-9/12 flex flex-col items-center justify-between md:pt-32 pb-16 gap-y-5">
+          <div className="w-full flex flex-col items-center justify-center px-12 md:px-24 gap-y-5">
             <div className="w-full flex flex-col items-center justify-center gap-y-5">
               <div className="w-full flex flex-row justify-center gap-x-5">
                 <img src={sims_ppob} alt="sims-ppob" />
@@ -74,7 +76,7 @@ export default function LoginPages() {
               </div>
 
               <div className="w-full px-12">
-                <h5 className="text-[28px] leading-8 text-black text-center">
+                <h5 className="text-[20px] md:text-[28px] leading-8 text-black text-center">
                   Masuk atau buat akun untuk memulai
                 </h5>
               </div>
@@ -237,9 +239,11 @@ export default function LoginPages() {
           </div>
         </div>
 
-        <div className="w-full h-svh">
-          <img src={login} alt="login" className="w-full h-full" />
-        </div>
+        {!isMobile && (
+          <div className="w-full h-svh">
+            <img src={login} alt="login" className="w-full h-full" />
+          </div>
+        )}
       </div>
     </main>
   );

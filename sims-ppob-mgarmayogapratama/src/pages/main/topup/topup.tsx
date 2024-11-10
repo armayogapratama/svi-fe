@@ -24,12 +24,14 @@ import { createTopUp } from "@/store/action/actionTopup";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Banknote, Loader } from "lucide-react";
+import { useMediaQuery } from "@/hooks/hook";
 
 export default function TopupPages() {
   const dispatch = useDispatch<AppDispatch>();
   const profile = useSelector((state: RootState) => state.profile.profileUser);
   const balance = useSelector((state: RootState) => state.balance.balance);
   const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [showBalance, setShowBalance] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState<string>("");
@@ -106,7 +108,7 @@ export default function TopupPages() {
 
   return (
     <section className="w-full flex flex-col items-center justify-center">
-      <div className="w-full flex flex-col gap-y-16">
+      <div className="w-full flex flex-col gap-y-8 md:gap-y-16">
         <InformationComponent
           profile={profile}
           balance={balance}
@@ -114,13 +116,32 @@ export default function TopupPages() {
           handleToggleBalance={handleToggleBalance}
         />
 
-        <div className="w-full flex flex-col gap-y-1 px-24">
-          <p className="text-[20px]">Silahkan masukkan</p>
-          <h5 className="text-[32px] font-semibold">Nominal Top Up</h5>
+        <div className="w-full flex flex-col gap-y-1 px-12 md:px-24">
+          <p className="text-[18px] md:text-[20px]">Silahkan masukkan</p>
+          <h5 className="text-[24px] md:text-[32px] font-semibold">
+            Nominal Top Up
+          </h5>
         </div>
 
-        <div className="w-full flex flex-row gap-x-3 px-24">
-          <div className="w-9/12 flex flex-col gap-y-3">
+        <div className="w-full flex flex-col md:flex-row gap-y-3 md:gap-x-3 px-12 md:px-24">
+          {isMobile && (
+            <div className="grid grid-cols-3 gap-y-5 gap-x-3">
+              {amounts.map((amt: number) => (
+                <Button
+                  key={amt}
+                  className={`text-[14px] p-2 border border-gray-400 rounded-md ${
+                    selectedAmount === amt
+                      ? "bg-blue-500 text-white"
+                      : "bg-white"
+                  }`}
+                  onClick={() => handleAmountClick(amt)}>
+                  Rp{amt.toLocaleString("id-ID")}
+                </Button>
+              ))}
+            </div>
+          )}
+
+          <div className="w-full md:w-9/12 flex flex-col gap-y-3">
             <form
               onSubmit={handleTopUp}
               className="w-full flex flex-col gap-y-5">
@@ -150,23 +171,27 @@ export default function TopupPages() {
             </form>
           </div>
 
-          <div className="grid grid-cols-3 gap-y-5 gap-x-3">
-            {amounts.map((amt: number) => (
-              <Button
-                key={amt}
-                className={`text-[14px] p-2 border border-gray-400 rounded-md ${
-                  selectedAmount === amt ? "bg-blue-500 text-white" : "bg-white"
-                }`}
-                onClick={() => handleAmountClick(amt)}>
-                Rp{amt.toLocaleString("id-ID")}
-              </Button>
-            ))}
-          </div>
+          {!isMobile && (
+            <div className="grid grid-cols-3 gap-y-5 gap-x-3">
+              {amounts.map((amt: number) => (
+                <Button
+                  key={amt}
+                  className={`text-[14px] p-2 border border-gray-400 rounded-md ${
+                    selectedAmount === amt
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-black"
+                  }`}
+                  onClick={() => handleAmountClick(amt)}>
+                  Rp{amt.toLocaleString("id-ID")}
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
       <AlertDialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <AlertDialogContent className="w-3/12 bg-white">
+        <AlertDialogContent className="w-10/12 md:w-3/12 bg-white rounded-md">
           <AlertDialogHeader className="w-full flex flex-col items-center justify-center gap-y-3">
             <div className="flex flex-row justify-center w-2/12">
               <img
@@ -205,7 +230,7 @@ export default function TopupPages() {
       </AlertDialog>
 
       <AlertDialog open={!!topUpResult} onOpenChange={handleCloseResult}>
-        <AlertDialogContent className="w-3/12 bg-white">
+        <AlertDialogContent className="w-10/12 md:w-3/12 bg-white rounded-md">
           <AlertDialogHeader className="w-full flex flex-col items-center justify-center gap-y-3">
             {topUpResult === "success" ? (
               <>

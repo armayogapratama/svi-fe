@@ -31,8 +31,8 @@ export default function DashboardPages() {
   };
 
   return (
-    <main className="w-full flex flex-row items-center justify-center">
-      <div className="w-full flex flex-col gap-y-16">
+    <main className="w-full flex flex-row items-center justify-center pb-12 md:pb-0">
+      <div className="w-full flex flex-col gap-y-8 md:gap-y-16">
         <InformationComponent
           profile={profile}
           balance={balance}
@@ -40,7 +40,7 @@ export default function DashboardPages() {
           handleToggleBalance={handleToggleBalance}
         />
 
-        <div className="w-full flex flex-row gap-x-5 px-24">
+        <div className="w-full grid grid-cols-4 md:flex flex-row gap-y-5 md:gap-x-5 px-12 md:px-24">
           {services &&
             services.length > 0 &&
             services.map((service: ServiceInterface) => {
@@ -53,7 +53,7 @@ export default function DashboardPages() {
             })}
         </div>
 
-        <div className="w-full flex flex-col pl-24">
+        <div className="w-full flex flex-col pl-12 md:pl-24">
           <Carousel>
             <CarouselContent className="flex flex-row">
               {banners &&

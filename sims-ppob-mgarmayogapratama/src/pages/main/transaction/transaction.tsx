@@ -49,7 +49,7 @@ export default function TransactionPages() {
 
   return (
     <section className="w-full flex flex-col items-center justify-center pb-8">
-      <div className="w-full flex flex-col gap-y-16">
+      <div className="w-full flex flex-col gap-y-8 md:gap-y-16">
         <InformationComponent
           profile={profile}
           balance={balance}
@@ -57,11 +57,11 @@ export default function TransactionPages() {
           handleToggleBalance={handleToggleBalance}
         />
 
-        <div className="w-full flex flex-col gap-y-1 px-24">
+        <div className="w-full flex flex-col gap-y-1 px-4 md:px-24">
           <h5 className="text-[20px] font-semibold">Semua Transaksi</h5>
 
           <div className="w-full flex gap-x-2 mb-4">
-            <div className="flex gap-x-6">
+            <div className="flex gap-x-3 md:gap-x-6">
               {lastSixMonths.map((month) => (
                 <button
                   key={month}

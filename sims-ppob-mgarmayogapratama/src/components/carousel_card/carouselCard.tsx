@@ -7,7 +7,7 @@ export default function CarouselCardComponent({
   banner: BannerInterface;
 }) {
   return (
-    <CarouselItem className="basis-[23%]">
+    <CarouselItem className="basis-[45%] md:basis-[23%]">
       <img
         src={banner.banner_image}
         alt={banner.banner_name}

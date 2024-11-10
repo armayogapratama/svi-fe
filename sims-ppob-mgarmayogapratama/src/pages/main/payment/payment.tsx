@@ -102,7 +102,7 @@ export default function PaymentPages() {
 
   return (
     <section className="w-full flex flex-row items-center justify-center">
-      <div className="w-full flex flex-col gap-y-16">
+      <div className="w-full flex flex-col gap-y-8 md:gap-y-16">
         <InformationComponent
           profile={profile}
           balance={balance}
@@ -110,13 +110,13 @@ export default function PaymentPages() {
           handleToggleBalance={handleToggleBalance}
         />
 
-        <div className="w-full flex flex-col gap-y-2 px-24">
+        <div className="w-full flex flex-col gap-y-2 px-12 md:px-24">
           <h5 className="text-[20px]">Pembayaran</h5>
           <div className="w-full flex flex-row items-center gap-x-3">
             <img
               src={mainService?.service_icon}
               alt={mainService?.service_name}
-              className="w-[5%] h-full object-contain"
+              className="w-[20%] md:w-[5%] h-full object-contain"
             />
 
             <p className="text-[18px] font-semibold">
@@ -125,7 +125,7 @@ export default function PaymentPages() {
           </div>
         </div>
 
-        <div className="w-full flex flex-row gap-x-3 px-24">
+        <div className="w-full flex flex-row gap-x-3 px-12 md:px-24">
           <div className="w-full flex flex-col gap-y-3">
             <form
               onSubmit={handlePayment}
@@ -155,7 +155,7 @@ export default function PaymentPages() {
       </div>
 
       <AlertDialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <AlertDialogContent className="w-3/12 bg-white">
+        <AlertDialogContent className="w-10/12 md:w-3/12 bg-white rounded-md">
           <AlertDialogHeader className="w-full flex flex-col items-center justify-center gap-y-3">
             <div className="flex flex-row justify-center w-2/12">
               <img
@@ -194,7 +194,7 @@ export default function PaymentPages() {
       </AlertDialog>
 
       <AlertDialog open={!!paymentResult} onOpenChange={handleCloseResult}>
-        <AlertDialogContent className="w-3/12 bg-white">
+        <AlertDialogContent className="w-10/12 md:w-3/12 bg-white rounded-md">
           <AlertDialogHeader className="w-full flex flex-col items-center justify-center gap-y-3">
             {paymentResult === "success" ? (
               <>
